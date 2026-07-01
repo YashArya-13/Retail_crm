@@ -1,101 +1,57 @@
-# Retail CRM - Zoho CRM Inspired Web Application
+# Retail CRM
 
-A modern, responsive Retail CRM web application designed with a Zoho CRM-inspired interface. Built with Python, Flask, SQLite, and styled with premium CSS elements, it features user authentication (including Google OAuth), customizable user profiles, and a dynamic interactive dashboard for tracking leads and tasks.
+A simple, responsive CRM prototype inspired by Zoho CRM. Built with Python, Flask, and SQLite, featuring basic lead/task tracking and Google OAuth login.
 
----
+## Features
 
-## 🚀 Features
+- **Dashboard**: Quick overview of active leads, won deals, revenue pipeline, and pending tasks.
+- **Lead Management**: Form to add new leads dynamically on the dashboard.
+- **Task List**: Interactive check-off list for daily items.
+- **Profile Page**: Form to update user details (name, address, education) and upload a profile photo.
+- **Authentication**: Email/password registration and Google OAuth support.
 
-- **🏠 Interactive Dashboard**:
-  - Live greeting banner that updates based on the user's name.
-  - KPI Stat Indicators: Active Leads, Deals Won, Revenue Pipeline, and Open Tasks.
-  - Interactive Task List: Mark tasks complete in real-time.
-  - Quick Action Modal: Instantly add new mock leads, calculate totals, and display status badges.
-- **👤 User Profile Management**:
-  - View and edit user details (Full Name, Address, Education).
-  - Profile picture upload which dynamically updates the dashboard sidebar avatar.
-- **🔐 Secure Authentication**:
-  - Secure signup and login with password hashing (using `werkzeug.security`).
-  - Google OAuth integration for instant one-click login (via `flask-dance`).
-  - Protected routes requiring authentication (`flask-login`).
-- **💎 Premium UI Design**:
-  - Modern typography using Google Fonts (**Outfit**).
-  - Elegant dark-blue gradient welcome banner.
-  - Dynamic micro-interactions, custom input transitions, and hover-scaling cards.
-  - Full mobile responsiveness.
+## Tech Stack
 
----
+- **Backend**: Flask, Flask-SQLAlchemy, Flask-Login, Flask-Dance (Google OAuth)
+- **Frontend**: Bootstrap 5, Bootstrap Icons, Custom CSS/JS
+- **Database**: SQLite
 
-## 🛠️ Tech Stack
+## Setup & Installation
 
-- **Backend**: Python, Flask, Flask-SQLAlchemy, Flask-Login, Flask-Dance
-- **Frontend**: HTML5, CSS3, Bootstrap 5.3.3, Bootstrap Icons, JavaScript
-- **Database**: SQLite (SQLAlchemy ORM)
+1. **Clone the repository and install requirements:**
+   ```bash
+   git clone https://github.com/YashArya-13/Retail_crm.git
+   cd Retail_crm
+   
+   python -m venv venv
+   # On Windows:
+   .\venv\Scripts\activate
+   # On macOS/Linux:
+   source venv/bin/activate
+   
+   pip install -r requirements.txt
+   ```
 
----
+2. **Set up the environment:**
+   Create a `.env` file in the project root:
+   ```env
+   SECRET_KEY=some-random-secret-key
+   GOOGLE_CLIENT_ID=your-google-client-id
+   GOOGLE_CLIENT_SECRET=your-google-client-secret
+   OAUTHLIB_INSECURE_TRANSPORT=1
+   ```
+   *Note: If you plan to use Google Sign-in, make sure to configure and download your `client_secret.json` from the Google Developer Console and place it in the project root.*
 
-## ⚙️ Setup and Installation
+3. **Run the local server:**
+   ```bash
+   python app.py
+   ```
+   Access the app at `http://127.0.0.1:5000` in your web browser.
 
-### 1. Prerequisites
-- Python 3.10+ installed.
+## Project Structure
 
-### 2. Installation
-Clone the repository, initialize your virtual environment, and install dependencies:
-```bash
-# Clone the repository
-git clone https://github.com/YashArya-13/Retail_crm.git
-cd Retail_crm
-
-# Create and activate virtual environment
-python -m venv venv
-# On Windows (PowerShell):
-venv\Scripts\Activate.ps1
-# On Linux/macOS:
-source venv/bin/activate
-
-# Install required packages
-pip install -r requirements.txt
-```
-
-### 3. Environment Configuration
-Create a `.env` file in the root directory:
-```env
-SECRET_KEY=your-flask-secret-key
-GOOGLE_CLIENT_ID=your-google-client-id
-GOOGLE_CLIENT_SECRET=your-google-client-secret
-OAUTHLIB_INSECURE_TRANSPORT=1
-```
-*Note: Make sure your `client_secret.json` is placed in the project root if using Google OAuth credentials.*
-
-### 4. Running the Application
-Start the Flask development server:
-```bash
-python app.py
-```
-Open your browser and navigate to `http://127.0.0.1:5000`.
-
----
-
-## 📂 Project Structure
-
-```text
-├── app.py                  # Main Flask application and routing logic
-├── models.py               # SQLAlchemy database models (User, Profile)
-├── config.py               # App configurations and database paths
-├── requirements.txt        # Project dependencies
-├── .gitignore              # Git ignored files (DB, secrets, venv)
-├── templates/              # HTML layout files
-│   ├── base.html           # Core template wrapper, global CSS & scripts
-│   ├── dashboard.html      # CRM dashboard view
-│   ├── profile.html        # Profile settings page
-│   ├── login.html          # Authentication login page
-│   └── signup.html         # User signup page
-└── static/                 # Static assets
-    ├── css/                # Custom styling
-    └── uploads/            # Profile photo uploads (Git-ignored)
-```
-
----
-
-## 🛡️ License
-Distributed under the MIT License. See `LICENSE` for more information.
+- `app.py`: Routing, page actions, and OAuth handler.
+- `models.py`: Database models (User and Profile schemas).
+- `config.py`: Core configurations (SQLite URI and tracking).
+- `templates/`: HTML templates (login, signup, base, dashboard, profile).
+- `static/`: Custom stylesheets and user uploads.
