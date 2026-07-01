@@ -1,0 +1,18 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+.venv
+venv/
+ENV/
+
+# Databases
+*.db
+*.sqlite
+
+# Secret files
+client_secret.json
+instance/
